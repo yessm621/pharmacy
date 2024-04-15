@@ -1,7 +1,7 @@
 plugins {
     id 'groovy' // groovy 지원
     id 'java'
-    id 'org.springframework.boot' version '3.1.10'
+    id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.1.4'
 }
 
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
@@ -39,8 +39,12 @@ dependencies {
     testImplementation('org.spockframework:spock-core:2.1-groovy-3.0')
     testImplementation('org.spockframework:spock-spring:2.1-groovy-3.0')
 
-    // 런타임에 클래스 기반 mock을 만들기 위해서 필요
-    testImplementation('net.bytebuddy:byte-buddy:1.9.3')
+    // 런타임에 클래스 기반 spock mock을 만들기 위해서 필요
+    testImplementation('net.bytebuddy:byte-buddy:1.12.10')
+
+    // testcontainers
+    testImplementation 'org.testcontainers:spock:1.17.1'
+    testImplementation 'org.testcontainers:mariadb:1.17.1'
 }
 
 tasks.named('bootBuildImage') {
