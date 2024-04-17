@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pharmacy {
+public class Pharmacy extends BaseTimeEntity {
 
     @Id
     @GeneratedValue
